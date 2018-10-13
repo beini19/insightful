@@ -6,6 +6,7 @@ class Business:
         self.location = ""
         self.place_id = ""
         self.reviews = []      # array of reviews for the business
+        self.url = ""
 
 
 # Contains information about individual reviews for a business
