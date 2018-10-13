@@ -1,1 +1,11 @@
 *.exe
+*.vscode
+*.DS_Store
+
+#local chromedriver files
+paths.py
+chromedriver
+chromedriver.exe
+
+#Google Maps API
+privatekey.py
