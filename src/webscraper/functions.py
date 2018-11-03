@@ -12,3 +12,4 @@ def get_reviews():
     time.sleep(20)
     driver.close()
     return reviews # array of Review objects
+    
