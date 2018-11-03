@@ -1,6 +1,7 @@
 *.exe
 *.vscode
 *.DS_Store
+*.pyc
 
 #local chromedriver files
 paths.py
