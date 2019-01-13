@@ -4,12 +4,16 @@ import time
 
 def get_reviews():
     driver = webdriver.Chrome()
-    driver.get("https://www.google.ca/maps/place/Gol's+Lanzhou+Noodle/@43.4726523,-80.5362191,21z/data=!4m5!3m4!1s0x882bf5b25a94ebb3:0x1ac4eaf8c994bd9a!8m2!3d43.4725456!4d-80.5361185")
-    numReviewsButton = driver.find_element_by_xpath("//button[@class='section-reviewchart-numreviews']")
-    numReviewsButton.click()
-    reviewWidget = driver.find_element_by_xpath("//div[@class='widget-pane-content']")
-    driver.execute_script('arguments[0].scrollTop = arguments[0].scrollHeight', reviewWidget) # test this
+    # (https://www.google.ca/search?q=google&rlz=1C1CHBF_enCA789CA789&oq=google&aqs=chrome..69i57j69i60l5.5837j0j7&sourceid=chrome&ie=UTF-8")
+    # driver.get("")
+    driver.get("https://www.google.ca/maps/@43.4830284,-80.5324829,15z")
+    #numReviewsButton = driver.find_element_by_xpath("//button[@class='section-reviewchart-numreviews']")
+    #numReviewsButton.click()
+    driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+    # reviewWidget = driver.find_element_by_xpath("//*[@id='pane']/div/div[1]/div/div/div[2]")
+    # driver.execute_script('getElementByClassName("section-listbox section-scrollbox scrollable-y").scrollBy(0, 1000)')
+    # driver.execute_script('reviewWidget.scrollTo(document.body.scrollHeight,0)') # test this
     time.sleep(20)
     driver.close()
-    return reviews # array of Review objects
-    
+
+get_reviews()
