@@ -43,5 +43,6 @@ business.location = "200 Waterloo Ave, Guelph, ON N1H 3J5, Canada"
 business.place_id = "ChIJn_pSxreaK4gRBaqeg1MbXa8"
 
 # business = get_business_info("200 Waterloo Ave")
-print(business.name + "\n" + business.location + "\n" + business.place_id)
 print(get_maps_url(business.place_id))
+business = get_business_info("")
+print(business.name + "\n" + business.location + "\n" + business.place_id)
