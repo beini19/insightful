@@ -11,4 +11,5 @@ chromedriver.exe
 #Google Maps API
 privatekey.py
 
+#node modules
 node_modules/*
