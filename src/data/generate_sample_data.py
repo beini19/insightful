@@ -26,3 +26,7 @@ filename = "sample_text.json"
 review_list = read_review_data(filename)
 
 # print_review_list(review_list)
+
+
+# finished data generation
+# todo: run data through watson
