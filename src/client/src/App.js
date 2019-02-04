@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import BarGraph from './graphs/BarGraph'
+import LineGraph from './graphs/LineGraph'
 
 class App extends Component {
+  state = {
+    data: [12, 5, 6, 6, 9, 10],
+    svgWidth: 700,
+    svgHeight: 300
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} />
+        <LineGraph></LineGraph>
       </div>
     );
   }
