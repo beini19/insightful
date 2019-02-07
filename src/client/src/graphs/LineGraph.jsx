@@ -26,8 +26,8 @@ class LineGraph extends Component {
     var y = d3.scaleLinear().rangeRound([height, 0]);
 
     var line = d3.line()
-      .x(function(xd) { return x(xd)})
-      .y(function(d) { return y(d)})
+      .x(function(xdata) { return x(xdata)})
+      .y(function(data) { return y(data)})
       x.domain(d3.extent(xdata, function(xd) { return xd }));
       y.domain(d3.extent(data, function(d) { return d }));
 
