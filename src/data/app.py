@@ -14,10 +14,11 @@ def hello():
 @app.route("/get_insights/", methods=['POST'])
 def get_insights():
     text = request.data
+    print(text)
     if not text:
         return "no text sent"
 
-    # insight = get_insight(text)
+    insight = get_insight(text)
     # json_insight = json.dumps(insight.__dict__)
     # print("returning analysis:")
     # print(insight)
@@ -126,7 +127,8 @@ def get_insights():
             "text_units": 1
         }
     }
-    return jsonify(test_insight)
+    # return jsonify(test_insight)
+    return jsonify(insight)
 
 
 
