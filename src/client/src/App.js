@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import BarGraph from './graphs/BarGraph'
 import LineGraph from './graphs/LineGraph'
+import ScatterPlot from './graphs/ScatterPlot'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [12, 5, 6, 6, 9, 10],
+      scatterData: [[0, 3],[5, 13],[10, 22],[15, 36],[20, 48],[25, 59],[30, 77],[35, 85]],
       svgWidth: 700,
       svgHeight: 300,
       reviewText: "",
       reviewData: {}
     }
-
-    // This binding is necessary to make `this` work in the callback
-    // this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange = (blob) => {
@@ -52,8 +51,9 @@ class App extends Component {
         </form>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Analyze!</button>
         <p>{JSON.stringify(this.state.reviewData)}</p>
+        <ScatterPlot data={this.state.scatterData}></ScatterPlot>
         <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} />
-        <LineGraph></LineGraph>
+        <LineGraph data={this.state.scatterData}></LineGraph>
         </div>
       </div>
     );
