@@ -1,5 +1,6 @@
 import React from "react"
 import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
+import "../styles/scatterPlot.css"
 
 // reference: https://gist.github.com/isaaguilar/fb92517c1ce878f7d3780cf9aa74a709
 function sortNumber(a, b) {
@@ -14,7 +15,7 @@ export default class ScatterPlot extends React.Component {
   render() {
     const margin = { top: 20, right: 15, bottom: 60, left: 60 }
     const width = 800 - margin.left - margin.right
-    const height = 600 - margin.top - margin.bottom
+    const height = 400 - margin.top - margin.bottom
     const data = this.props.data
 
     const x = scaleLinear()
@@ -72,10 +73,11 @@ class RenderCircles extends React.Component {
   render() {
     let renderCircles = this.props.data.map((coords, i) => (
       <circle
+        className="dot"
         cx={this.props.scale.x(coords[0])}
         cy={this.props.scale.y(coords[1])}
         r="8"
-        style={{ fill: "rgba(25, 158, 199, .9)" }}
+        // style={{ fill: "rgba(25, 158, 199, .9)" }}
         key={i}
       />
     ))
@@ -103,11 +105,12 @@ class TrendLine extends React.Component {
 
     return (
       <line
+        className="line"
         x1={this.props.scale.x(trendline_points[0][0])}
         y1={this.props.scale.y(trendline_points[0][1])}
         x2={this.props.scale.x(trendline_points[1][0])}
         y2={this.props.scale.y(trendline_points[1][1])}
-        style={{ stroke: "black", strokeWidth: "2" }}
+        // style={{ stroke: "black", strokeWidth: "2" }}
       />
     )
   }

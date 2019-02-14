@@ -1,0 +1,27 @@
+.line {
+    stroke: black;
+    fill: none;
+    stroke-width: 1;
+}
+
+.axis,
+.axis line {
+    fill: none;
+    stroke: black;
+    /* shape-rendering: crispEdges; */
+}
+
+.text {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-label {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dot {
+    stroke: rgba(25, 158, 199, .9);
+    fill: rgba(25, 158, 199, .9)
+}
