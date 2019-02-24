@@ -15,9 +15,8 @@ def get_sentiment_analysis(review_text):
     response = service.analyze(
         text=review_text,
         features=Features(sentiment=SentimentOptions(),
-                        keywords=KeywordsOptions(),
-                        emotion=EmotionOptions(),
-                        concepts=ConceptsOptions(limit=3))
+                        keywords=KeywordsOptions(sentiment=True, limit=5),
+                        emotion=EmotionOptions())
     ).get_result()
 
     return response
