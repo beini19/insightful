@@ -20,16 +20,25 @@
 .progress-bar .bar > div {
     display: inline-block;
     height: 18px;
+    border: none;
 }
 
 .progress-bar .bar > div:first-of-type {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+    border-right-color: transparent;
+    -webkit-transition: width .5s linear;
+    -o-transition: width .5s linear;
+    transition: width .5s linear;
 }
 
 .progress-bar .bar > div:last-of-type {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    border-right-color: transparent;
+    -webkit-transition: width .5s linear;
+    -o-transition: width .5s linear;
+    transition: width .5s linear;
 }
 
 .progress-bar .legend {

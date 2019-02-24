@@ -1,0 +1,13 @@
+.jumbotron {
+    /* background-image: url("../images/header.jpg"); */
+    /* background-size: cover; */
+    background-color: navy;
+    background-size: 1200px 500px;
+    min-height: 400px;
+    background-repeat: no-repeat;
+}
+
+.text {
+    color: white;
+    font-size: 50px;
+}

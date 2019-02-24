@@ -1,6 +1,6 @@
 import React from "react"
 import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
-import "../styles/scatterPlot.css"
+import "../assets/styles/scatterPlot.css"
 
 // reference: https://gist.github.com/isaaguilar/fb92517c1ce878f7d3780cf9aa74a709
 function sortNumber(a, b) {
@@ -37,7 +37,7 @@ export default class ScatterPlot extends React.Component {
       .range([height, 0])
 
     return (
-      <div>
+      <div className="scatter-plot">
         <h3> Scatter Plot with Trend Line </h3>
         <svg
           width={width + margin.right + margin.left}

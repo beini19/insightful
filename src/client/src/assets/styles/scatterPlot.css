@@ -1,3 +1,9 @@
+.scatter-plot {
+    display: block;
+    position: relative;
+    width: auto;
+}
+
 .line {
     stroke: black;
     fill: none;

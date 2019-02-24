@@ -1,7 +1,7 @@
 import React, {Component} from "react"
-import '../styles/progressBar.css'
+import '../assets/styles/progressBar.css'
 
-class LineGraph extends Component {
+class ProgressBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,7 @@ class LineGraph extends Component {
           </div>
         </div> */}
         <div className="bar">
-          <div style={{'backgroundColor': this.state.color, 'background-image': 'linear-gradient(to right, #B24592, #F15F79)', 'width': this.props.value + '%'}}>
+          <div style={{'backgroundColor': this.state.color, 'background-image': 'linear-gradient(to right, #F15F79, #B24592)', 'width': this.props.value + '%'}}>
           </div>
           <div style={{'backgroundColor': '#d3d3d3', 'width': (100-this.props.value) + '%'}}>
           </div>
@@ -53,4 +53,4 @@ class LineGraph extends Component {
   }
 }
 
-export default LineGraph;
+export default ProgressBar;
