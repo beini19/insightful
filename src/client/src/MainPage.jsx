@@ -26,7 +26,9 @@ class MainPage extends Component {
         sadness: 0,
         fear: 0,
         disgust: 0
-      }
+      },
+      sentiment: {},
+      keywords: [],
     }
   }
 
@@ -53,51 +55,73 @@ class MainPage extends Component {
       .then(response => response.json())
       // eventually split data into watson analysis and array of reviews + time object
       .then(data => 
-        {this.setState({
+        {
+          console.log(data)
+          this.setState({
           reviewTrends: data.reviewTrends,
           sentimentData: data.sentimentData,
-          documentEmotion: data.sentimentData.emotion.document.emotion
+          documentEmotion: data.sentimentData.emotion.document.emotion,
+          sentiment: data.sentimentData.sentiment.document,
+          keywords: data.sentimentData.keywords
+
+          // for real data (so far)
+          // reviewTrends: data.reviewTrends,
+          // sentimentData: data,
+          // documentEmotion: data.emotion.document.emotion,
+          // sentiment: data.sentiment.document,
+          // keywords: data.keywords
         })}
         )
       .catch(err => console.log(err));
   }
 
+  scaleToOneHundred(num) {
+    // assume num is on a scale from -1 to 1
+    return ((num + 1) * 50);
+  }
+
   render() {
+    console.log(this.state.documentEmotion.joy*100)
     return (
       <div className="MainPage">
-        <div className="container-fluid ">
-        <div className="jumbotron"></div>
+        {/* <div className="container-fluid "> */}
+          <div className="jumbotron"></div>
           <form>
             <div className="form-group">
               <textarea className="form-control" onChange={this.handleChange} id="reviewText" rows="6" placeholder="Enter review text here..."></textarea>
             </div>
           </form>
           <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Analyze!</button>
+
           <p> {JSON.stringify(this.state.reviewTrends)} </p>
           <p> {JSON.stringify(this.state.sentimentData)} </p>
-          {/* <div class="d-flex p-2 bg-light justify-content-center"> */}
-            <ProgressBar name={"Joy"} value={this.state.documentEmotion.joy}></ProgressBar>
-            <ProgressBar name={"Anger"} value={75}></ProgressBar>
-            <ProgressBar name={"Sadness"} value={75}></ProgressBar>
-            <ProgressBar name={"Fear"} value={75}></ProgressBar>
-            <ProgressBar name={"Disgust"} value={75}></ProgressBar>
-          {/* </div> */}
-          <div class="d-flex p-2 justify-content-center">
-            <ScatterPlot data={this.state.reviewTrends}></ScatterPlot>
-          </div>
-          <div class="d-flex p-2 justify-content-center">
-            <ScatterPlot data={this.state.reviewTrends}></ScatterPlot>
-          </div>
-          <div class="d-flex p-2">
+          <p> {this.state.sentiment.score} &nbsp; {this.state.sentiment.label} </p>
+
+          <div className="container-fluid">
             <div className="row">
-              <div className="col flex-fill" style={divStyle}></div>
-              <div className="col flex-fill" style={divStyle}></div>
+              <ScatterPlot data={this.state.reviewTrends}></ScatterPlot>
+            </div>
+            <div className="row">
+              <div className="col flex-fill" style={divStyle}>
+                <ProgressBar name={"Joy"} value={this.state.documentEmotion.joy*100}/>
+                <ProgressBar name={"Anger"} value={this.state.documentEmotion.anger*100}/>
+                <ProgressBar name={"Sadness"} value={this.state.documentEmotion.sadness*100}/>
+                <ProgressBar name={"Fear"} value={this.state.documentEmotion.fear*100}/>
+                <ProgressBar name={"Disgust"} value={this.state.documentEmotion.disgust*100}/>
+              </div>
+              <div className="col flex-fill" style={divStyle}>
+                {this.state.keywords.map((keyword, i) => (
+                  <div key={i}>
+                    <ProgressBar name={keyword.text} value={this.scaleToOneHundred(keyword.sentiment.score)}/>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} />
-          <LineGraph data={this.state.reviewTrends}></LineGraph>
+          {/* <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} /> */}
+          {/* <LineGraph data={this.state.reviewTrends}></LineGraph> */}
         </div>
-      </div>
+      // </div>
     );
   }
 }
