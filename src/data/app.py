@@ -13,120 +13,72 @@ def hello():
  
 @app.route("/insights/", methods=['POST'])
 def get_insights():
-    text = request.data
-    if not text:
-        return "no text sent"
-
+    # text = request.data
+    # if not text:
+    #     return "no text sent"
     # insight = get_insight(text)
+    
     # json_insight = json.dumps(insight.__dict__)
     # print("returning analysis:")
     # print(insight)
 
     test_insight = {
         "reviewTrends": [[0, 3],[5, 13],[10, 22],[15, 36],[20, 48],[25, 59],[30, 77],[35, 85]],
-        "sentimentData": {
+        "sentimentData": {           
             "emotion": {
                 "document": {
                     "emotion": {
-                        "anger": 0.194194,
-                        "joy": 0.624043,
-                        "sadness": 0.201655,
-                        "fear": 0.004778,
+                        "anger": 0.194194, 
+                        "joy": 0.624043, 
+                        "sadness": 0.201655, 
+                        "fear": 0.004778, 
                         "disgust": 0.016226
                     }
                 }
-            },
+            }, 
             "sentiment": {
                 "document": {
-                    "score": 0.5679,
+                    "score": 0.35194, 
                     "label": "positive"
                 }
-            },
-            "language": "en",
+            }, 
+            "language": "en", 
             "keywords": [
                 {
-                    "relevance": 0.970355,
-                    "text": "Great value",
-                    "count": 1
+                    "relevance": 0.867717, 
+                    "text": "Great value", 
+                    "count": 1, 
+                    "sentiment": {"score": 0.891124, "label": "positive"}
                 },
                 {
-                    "relevance": 0.695119,
-                    "text": "peak times",
-                    "count": 1
-                },
+                    "relevance": 0.855505, 
+                    "text": "insane size", 
+                    "count": 1, 
+                    "sentiment": {"score": 0.01124, "label": "positive"}
+                }, 
                 {
-                    "relevance": 0.640712,
-                    "text": "insane size",
-                    "count": 1
-                },
+                    "relevance": 0.664524, 
+                    "text": "peak times", 
+                    "count": 1, 
+                    "sentiment": {"score": -0.690277, "label": "negative"}
+                }, 
                 {
-                    "relevance": 0.618598,
+                    "relevance": 0.65344, 
+                    "text": "Portions", 
+                    "count": 1, 
+                    "sentiment": {"score": 0.671124, "label": "positive"}}, 
+                {
+                    "relevance": 0.637883, 
                     "text": "amount of traffic",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.605925,
-                    "text": "Broth",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.592893,
-                    "text": "Portions",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.564587,
-                    "text": "students",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.540708,
-                    "text": "minutes",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.540708,
-                    "text": "chili",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.537293,
-                    "text": "noodles",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.537293,
-                    "text": "tendon",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.530043,
-                    "text": "place",
-                    "count": 1
-                },
-                {
-                    "relevance": 0.526195,
-                    "text": "weekend",
-                    "count": 1
+                    "count": 1, 
+                    "sentiment": {"score": -0.341124, "label": "negative"}
                 }
-            ],
-            "concepts": [
-                {
-                    "relevance": 0.91136,
-                    "text": "Weekend",
-                    "dbpedia_resource": "http://dbpedia.org/resource/Weekend"
-                },
-                {
-                    "relevance": 0.8704,
-                    "text": "Workweek",
-                    "dbpedia_resource": "http://dbpedia.org/resource/Workweek"
-                }
-            ],
+            ], 
             "usage": {
-                "text_characters": 362,
-                "features": 4,
-                "text_units": 1
-            }
+                "text_characters": 331, 
+                "features": 4, 
+                "text_units":1
+            }          
         }
     }
     return jsonify(test_insight)
