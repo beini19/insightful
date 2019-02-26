@@ -7,10 +7,23 @@
     margin-bottom: 15px;
 }
 
-.progress-bar .value > div {
+.progress-bar .value {
     font-size: 20px;
     text-align: right;
     vertical-align: middle;
+    float: right;
+    width: 50%;
+    display: inline;
+}
+
+.progress-bar .label {
+    vertical-align: middle;
+    text-align: left;
+    color: black;
+    font-size: 20px;
+    /* float: right;
+    width: 50%; */
+    display: inline;
 }
 
 .progress-bar .scale .graduation {
@@ -42,26 +55,19 @@
 }
 
 .progress-bar .legend {
-    width: 100%;
-    text-align: center;
+    float: left;
+    width: 50%;
+    text-align: left;
+    /* display: inline; */
 }
 
-
-.progress-bar .legend > div {
+/* .progress-bar .legend > div {
     display: inline-block;
     margin: 0 5px;
     text-align: left;
-}
+} */
 
 /* .progress-bar .legend > div .dot {
     font-size: 25px;
     vertical-align: middle;
 } */
-
-.progress-bar .legend > div .label {
-    margin-left: 2px;
-    vertical-align: middle;
-    text-align: left;
-    color: black;
-    font-size: 20px;
-}

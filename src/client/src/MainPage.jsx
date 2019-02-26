@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Scrollchor from 'react-scrollchor';
+import ReactTooltip from 'react-tooltip';
 
 import BarGraph from './components/BarGraph'
 import LineGraph from './components/LineGraph'
@@ -90,16 +91,18 @@ class MainPage extends Component {
                     Insightful is a web application that gives you additional insight on reviews.
                   </p>
                   <p className="text-center mb-0" >
-                    <a href="#" target="_blank" className="btn btn-primary ">
-                      Get Started
-                    </a>
+                    <Scrollchor to="about" className="nav-link">
+                      <div className="btn btn-primary ">
+                        Get Started
+                      </div>
+                    </Scrollchor>
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="section" id="instructions">
+        <section className="section" id="about">
           <div className="container">
             <div className="row justify-content-center mb-4">
               <div className="col-md-8 col-lg-6 text-center">
@@ -159,6 +162,15 @@ class MainPage extends Component {
           </div>
           <div className="row">
             <div className="col flex-fill bar-group">
+              <div className="bar-group-header">
+                Overall Emotions
+                <a data-tip="" data-for="emotions"> <i className="far fa-question-circle"/> </a>
+                <ReactTooltip id="emotions" place="top" type="dark" effect="solid" offset={{right: 5}}>
+                  Displays the emotions shown in all the <br/>
+                  reviews. 0% indicates all negative <br/>
+                  reviews, and 100% indicates all positive.
+                </ReactTooltip>
+              </div>
               <ProgressBar name={"Joy"} value={this.state.documentEmotion.joy*100}/>
               <ProgressBar name={"Anger"} value={this.state.documentEmotion.anger*100}/>
               <ProgressBar name={"Sadness"} value={this.state.documentEmotion.sadness*100}/>
@@ -166,21 +178,54 @@ class MainPage extends Component {
               <ProgressBar name={"Disgust"} value={this.state.documentEmotion.disgust*100}/>
             </div>
             <div className="col flex-fill bar-group">
+              <div className="bar-group-header">
+                Keywords
+                <a data-tip="" data-for="keywords"> <i className="fas fa-question-circle"/> </a>
+                  <ReactTooltip id="keywords" data-place="top" type="dark" effect="solid" offset={{right: 5}}>
+                    Displays the 5 top keywords in the reviews <br/>
+                    and the sentiment towards them. <br/>
+                    0% indicates negative sentiment, <br/>
+                    and 100% indicates positive.
+                  </ReactTooltip>
+              </div>
               {this.state.keywords.map((keyword, i) => (
                 <div key={i}>
-                  <ProgressBar name={keyword.text} value={keyword.sentiment ? this.scaleToOneHundred(keyword.sentiment.score) : 0}/>
+                  <ProgressBar name={keyword.text ? keyword.text : ""} value={keyword.sentiment ? this.scaleToOneHundred(keyword.sentiment.score) : 0}/>
                 </div>
               ))}
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <ScatterPlot data={this.state.reviewTrends}></ScatterPlot>
+              {/* <ScatterPlot data={this.state.reviewTrends}></ScatterPlot> */}
             </div>
           </div>
         </div>
         {/* <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} /> */}
         {/* <LineGraph data={this.state.reviewTrends}></LineGraph> */}
+
+        <footer className="top-padding bg-dark">
+          <div className="container">
+            <div className="row align-self-center">
+              <div className="col-lg-4 col-md-6">
+                <div className="footer-widget">
+                  <a href="#" className="footer-brand text-white">
+                    Contact us
+                  </a>
+                  <p>Do you have questions, comments, or suggestions for a new feature? Did you find a bug? Fill out the form to get in touch with us!</p>
+                </div>
+              </div>
+              <div className="col-lg-5 ml-lg-auto col-md-6">
+                  
+              </div>
+            </div>
+            <div className="row justify-content-md-center footer-copy">
+              <div className="col-lg-8 col-md-6 col-sm-6 text-center">
+                <p className="lead text-white-50">&copy; Beini Fang | Design by Themeturn </p>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

@@ -27,16 +27,16 @@ class ProgressBar extends Component {
   render() {
     return (
       <div className="progress-bar">
-        <div className="legend">
-          <div>
-            <span className="label">{this.state.name}</span>
-          </div>
-          <div className="value">
-            <div style={{'color': this.state.color}}>
+        {/* <div className="legend"> */}
+          {/* <div> */}
+            <div className="label">{this.state.name}</div>
+          {/* </div> */}
+          {/* <div className="value"> */}
+            <div className="value" style={{'color': this.state.color}}>
               <span>{Math.round(this.props.value)}%</span>
             </div>
-          </div>
-        </div>     
+          {/* </div> */}
+        {/* </div>      */}
         {/* <div className="scale">
           <div className="graduation" style={{'color': this.state.color, 'width': this.state.value + '%'}}>
             <span>|</span>

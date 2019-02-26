@@ -38,3 +38,22 @@
     width: 50%;
     padding-bottom: 8%;
 }
+
+.bar-group .bar-group-header {
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 3%;
+    font-weight: 500;
+}
+
+.tooltip {
+    padding-left: 5%;
+}
+
+.fa-question-circle {
+    color: #c6c6c6;
+    font-size: 15px;
+    vertical-align: 40%;
+    padding-left: 0.5%;
+}
