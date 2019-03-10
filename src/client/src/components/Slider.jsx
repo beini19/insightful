@@ -16,7 +16,7 @@ class Slider extends Component {
       <div className="progress-bar">
         <div className="legend">
           <div>
-            <span className="label">{this.state.name}</span>
+            <div className="label">{this.state.name}</div>
           </div>
           <div className="value">
             <div style={{'color': this.state.color}}>

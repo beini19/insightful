@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import Scrollchor from 'react-scrollchor';
-import ReactTooltip from 'react-tooltip';
+import React, { Component } from 'react'
+import Scrollchor from 'react-scrollchor'
+import ReactTooltip from 'react-tooltip'
+
+import Welcome from './components/Welcome'
+import Instructions from './components/Instructions'
+import Footer from './components/Footer'
 
 import BarGraph from './components/BarGraph'
 import LineGraph from './components/LineGraph'
 import ScatterPlot from './components/ScatterPlot'
 import ProgressBar from './components/ProgressBar'
 import Slider from './components/Slider'
-import Jumbotron from './components/Jumbotron'
+
 import './assets/styles/mainPage.css'
 import './assets/styles/all.css'
 import './assets/styles/style.css'
@@ -32,7 +36,7 @@ class MainPage extends Component {
         disgust: 0
       },
       sentiment: {},
-      keywords: [],
+      keywords: [{},{},{},{},{}],
     }
   }
 
@@ -66,6 +70,10 @@ class MainPage extends Component {
       .catch(err => console.log(err));
   }
 
+  handleContactUsSubmit = (event) => {
+    console.log(event)
+  }
+
   scaleToOneHundred(num) {
     // num is on a scale from -1 to 1, scale num to a value between 0-100
     return ((num + 1) * 50);
@@ -75,68 +83,8 @@ class MainPage extends Component {
     console.log(this.state.documentEmotion.joy*100)
     return (
       <div className="MainPage">
-        <section className="section section-top section-full" id="header">
-          <div className="bg-cover" style={{"background-color": "grey"}}></div>
-          <div className="bg-overlay"></div>
-          <div className="container">
-            <div className="row justify-content-center align-items-center">
-              <div className="col-md-10 col-lg-7 ">
-                <div className="banner-content">
-                  <p className="text-white text-uppercase text-center text-xs">
-                  </p>
-                  <h1 className="text-white text-center mb-4 display-4 font-weight-bold">
-                    Welcome to Insightful
-                  </h1>
-                  <p className="lead text-white text-center mb-5">
-                    Insightful is a web application that gives you additional insight on reviews.
-                  </p>
-                  <p className="text-center mb-0" >
-                    <Scrollchor to="about" className="nav-link">
-                      <div className="btn btn-primary ">
-                        Get Started
-                      </div>
-                    </Scrollchor>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="section" id="about">
-          <div className="container">
-            <div className="row justify-content-center mb-4">
-              <div className="col-md-8 col-lg-6 text-center">
-                <h2 className="lg-title mb-2">
-                  How does it work?
-                </h2>
-              </div>
-            </div>
-            <div className="row justy-content-center">
-              <div className="col-lg-4 col-md-6">
-                <div className="text-center feature-block">
-                  <div className="feature-icon-block mb-4">1</div>
-                  {/* <h4 className="mb-3 ">Modern Design</h4> */}
-                  <p>Open Google Maps and navigate to the reviews page.</p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="text-center feature-block">
-                  <div className="feature-icon-block mb-4">2</div>
-                  {/* <h4 className="mb-3">Recognised for excellence</h4> */}
-                  <p>Copy the entire review sidebar.</p>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6">
-                <div className="text-center feature-block">
-                  <div className="feature-icon-block mb-4">3</div>
-                  {/* <h4 className="mb-3">Delivery On Time </h4> */}
-                  <p>Paste into box below and click "Analyze".</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>  
+        <Welcome/>
+        <Instructions/> 
         <section className="section bg-light" id="submit-review">
           <div className="container">
             <div className="row justify-content-center mb-4">
@@ -152,8 +100,7 @@ class MainPage extends Component {
               </div>
             </div>
           </div>
-        </section>
-        
+        </section>        
         {/* <p> {JSON.stringify(this.state.reviewTrends)} </p> */}
         {/* <p> {JSON.stringify(this.state.sentimentData)} </p> */}
         <div className="container-fluid" id="results">
@@ -190,7 +137,7 @@ class MainPage extends Component {
               </div>
               {this.state.keywords.map((keyword, i) => (
                 <div key={i}>
-                  <ProgressBar name={keyword.text ? keyword.text : ""} value={keyword.sentiment ? this.scaleToOneHundred(keyword.sentiment.score) : 0}/>
+                  <ProgressBar name={keyword.text ? keyword.text : "Keyword"} value={keyword.sentiment ? this.scaleToOneHundred(keyword.sentiment.score) : 0}/>
                 </div>
               ))}
             </div>
@@ -203,29 +150,7 @@ class MainPage extends Component {
         </div>
         {/* <BarGraph data={this.state.data} svgWidth={this.state.svgWidth} svgHeight={this.state.svgHeight} /> */}
         {/* <LineGraph data={this.state.reviewTrends}></LineGraph> */}
-
-        <footer className="top-padding bg-dark">
-          <div className="container">
-            <div className="row align-self-center">
-              <div className="col-lg-4 col-md-6">
-                <div className="footer-widget">
-                  <a href="#" className="footer-brand text-white">
-                    Contact us
-                  </a>
-                  <p>Do you have questions, comments, or suggestions for a new feature? Did you find a bug? Fill out the form to get in touch with us!</p>
-                </div>
-              </div>
-              <div className="col-lg-5 ml-lg-auto col-md-6">
-                  
-              </div>
-            </div>
-            <div className="row justify-content-md-center footer-copy">
-              <div className="col-lg-8 col-md-6 col-sm-6 text-center">
-                <p className="lead text-white-50">&copy; Beini Fang | Design by Themeturn </p>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     );
   }
